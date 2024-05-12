@@ -16,7 +16,7 @@ const addTask=()=>{
     {
         setTimeout(()=>{
             error.style.display="block";
-        },2000);
+        },100);
         return;
     }
     const task=`
@@ -70,12 +70,32 @@ const addTask=()=>{
             if(checkBox.checked)
             {
                 taskCount-=1;
+                const deleteButtons=document.querySelectorAll(".delete");
+                deleteButtons.forEach((button)=>{
+            
+                        button.onclick=()=>{
+            
+                                button.parentNode.remove();
+                                
+                                displayCount(taskCount);
+                        };
+                });
+                displayCount(taskCount);
             }
-            else
-            {
                 taskCount+=1;
-            }
-            displayCount(taskCount);
+            
+                const deleteButtons=document.querySelectorAll(".delete");
+                 deleteButtons.forEach((button)=>{
+
+                     button.onclick=()=>{
+
+                    button.parentNode.remove();
+                    taskCount-=1;
+                    displayCount(taskCount);
+                        };
+                    });
+            
+            
         };
     });
     taskCount+=1;
